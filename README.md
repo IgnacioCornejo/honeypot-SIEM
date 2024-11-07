@@ -1,10 +1,10 @@
 <h1>Microsoft Sentinel Mapa de Ataque Home Lab</h1>
 
 <h2>Descripción</h2>
-<b>En este lab muestro un paso a paso de como usar una cuenta de microsoft azure, para crear una maquina virtual vulnerable con windows 10 que va a servir como objetivo facil para atacantes. La idea es exponer esta maquina virtual al internet y luego usar el monitor de agentes de azure,Microsoft Defender for Cloud, y Azure Sentinel para recolectar y agregar la data del ataque y mostrarla desplegada en un mapa de Microsoft Sentinel. En este proyecto voy a demostrar el uso de diferentes recursos y herramientas. Voy a estar usando Powershell para escanear el visor de eventos de windows en la maquina expuesta, mas especificamente el EventID 4625 que es intento de inicio de sesion fallido  This is a walkthrough of how I used Microsoft Azure and created a virtual machine in the cloud running Windows 10. I exposed a VM to the internet and used Azure Log Analytics Workspace, Microsoft Defender for Cloud, and Azure Sentinel to collect and aggregate the attack data and display it on a map in Microsoft Sentinel. This project will display the use of a few different tools and resources. I will be using PowerShell to scan Event Viewer in the exposed VM, specifically EventID 4625 which is failed logon attempts, and send that data to a logfile. The PowerShell Script also sends the IP address of any failed logons to IPgeolocation.io via an API, so later that information can be used Microsoft Sentinel to map where the logon attempts originated from. This project was done to gain experience with SIEMs, cloud concepts and resources, APIs, and Microsoft Azure. I learned how to provision and configure resources in the cloud, how to read SIEM logs and much more. This was a fun project and I hope anyone reading this appreciates the work that went into this project.<b/>
+<b>En este lab muestro un paso a paso de como usar una cuenta de microsoft azure, para crear una maquina virtual vulnerable con windows 10 que va a servir como objetivo facil para atacantes. La idea es exponer esta maquina virtual al internet y luego usar el monitor de agentes de azure,Microsoft Defender for Cloud, y Azure Sentinel para recolectar y agregar la data del ataque y mostrarla desplegada en un mapa de Microsoft Sentinel. En este proyecto voy a demostrar el uso de diferentes recursos y herramientas. Voy a estar usando Powershell para escanear el visor de eventos de windows en la maquina expuesta, mas especificamente el EventID 4625 que es intento de inicio de sesion fallido, y enviar esa data a un logfile.El script de Powershell tambien envia la direccion IP de cualquier inicio de sesion fallido a IPgeolocation.io por medio de una API, para asi luego esa informacion pueda ser usada por Microsoft Sentinel para mapear de donde se originaron esos intentos. Este proyecto fue realizado con la idea de ganar experiencia practica con SIEMs, conceptos de la nube y recursos, APIs, y Microsoft Azure en general. Aprendí como configurar y manejar recursos en la nube, como leer SIEM logs y poder extraer data de ellos.<b/>
 <br />
 
-<h2>Utilities Used</h2>
+<h2>Herramientas Usadas</h2>
 
 - <b>Microsoft Sentinel (SIEM)</b> 
 - <b>Log Analytic Workbooks</b>
@@ -16,20 +16,20 @@
 - <b>Event Viewer</b>
 - <b>Firewalls</b>
 
-<h2>Environments Used </h2>
+<h2>Entornos Usados </h2>
 
 - <b>Microsoft Azure</b>
-- <b>Windows 10</b> (21H2)
+- <b>Windows 10 Pro</b>
 
 <h2>Links</h2>
 
-- <b>Microsoft Azure Free Trial:</b> https://azure.microsoft.com/en-us/free/
+- <b>Microsoft Azure Free Trial:</b> https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account/
 - <b>IPGeolocation:</b> https://ipgeolocation.io/
 
-<h2 align="center">Program walk-through</h2>
+<h2 align="center">Paso a paso del Proyecto</h2>
 
 <p align="center">
-<b>The first thing I am going to do is create a Microsoft Azure account, this will be the cloud environment I'll use to provision my resources. I will take advantage of the $200 credit I'll receive to do this project. The resources I'm using are not very resource heavy, so my credit can be used towards future projects. Also included is the website I will be using for my IP geolocation data. </b> <br/>
+<b>Lo primero que hay que hacer una vez ya creada la cuenta de Azure, es crear un grupo de recursos, dentro de este va a estar montado el laboratorio, esto facilita la eliminación posteriormente del mismo (ya que nos seguiria consumiendo los creditos gratuitos de la prueba)  debido a que de otra manera tendriamos que eliminar cada maquina,vnet, servidor o lo que se este usando, uno por uno, de esta manera ahorramos tiempo y tambien es mas facil de manejar cada recurso.  The first thing I am going to do is create a Microsoft Azure account, this will be the cloud environment I'll use to provision my resources. I will take advantage of the $200 credit I'll receive to do this project. The resources I'm using are not very resource heavy, so my credit can be used towards future projects. Also included is the website I will be using for my IP geolocation data. </b> <br/>
 </p>
 
 ![Create_Azure_Subscription](https://user-images.githubusercontent.com/108043108/225348757-c41744df-2be1-4ffc-87a6-aa258a4102ef.JPG)
