@@ -152,10 +152,9 @@
 <br />
 <br />
 <p align="center">
-<b>The next step is the ping the VM from my native computer. I do this to see if I can make a direct connection to the VM and see if it is currently discoverable. It is not. That is because the VM has Windows Defender Firewall activated. The firewall is blocking ICMP Echo Requests, making the VM undiscoverable. I know this because I pinged the VM's public IP address which is 74.235.173.155 and I see Request timed out a few times. The firewall is dropping the ICMP request packets.</b> <br/>
-</p>
 
-![Ping_VM](https://user-images.githubusercontent.com/108043108/225383503-2a599790-511e-47ec-b858-4055f42ead0c.JPG)
+
+
 
 <br />
 <br />
