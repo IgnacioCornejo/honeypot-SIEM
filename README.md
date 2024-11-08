@@ -29,105 +29,151 @@
 <h2 align="center">Paso a paso del Proyecto</h2>
 
 <p align="center">
-<b>Lo primero que hay que hacer una vez ya creada la cuenta de Azure, es crear un grupo de recursos, dentro de este va a estar montado el laboratorio, esto facilita la eliminación posteriormente del mismo (ya que nos seguiria consumiendo los creditos gratuitos de la prueba)  debido a que de otra manera tendriamos que eliminar cada maquina,vnet, servidor o lo que se este usando, uno por uno, de esta manera ahorramos tiempo y tambien es mas facil de manejar cada recurso.  The first thing I am going to do is create a Microsoft Azure account, this will be the cloud environment I'll use to provision my resources. I will take advantage of the $200 credit I'll receive to do this project. The resources I'm using are not very resource heavy, so my credit can be used towards future projects. Also included is the website I will be using for my IP geolocation data. </b> <br/>
+<b>Lo primero que hay que hacer una vez ya creada la cuenta de Azure, es crear un grupo de recursos, dentro de este va a estar montado el laboratorio, esto facilita la eliminación posteriormente del mismo (ya que nos seguiria consumiendo los creditos gratuitos de la prueba)  debido a que de otra manera tendriamos que eliminar cada maquina,vnet, servidor o lo que se este usando, uno por uno, de esta manera ahorramos tiempo y tambien es mas facil de manejar cada recurso. Para encontrar el grupo de recursos podemos buscarlo en la barra superior. Al momento de elegir la zona, la predeterminada siempre es US East, pero aca debemos elegir la que es mas cercana a donde estemos. </b> <br/>
 </p>
 
-![Create_Azure_Subscription](https://user-images.githubusercontent.com/108043108/225348757-c41744df-2be1-4ffc-87a6-aa258a4102ef.JPG)
-![Set_Up_Completed](https://user-images.githubusercontent.com/108043108/225348950-5d9c01fa-a707-4813-a6f3-012c703c41df.JPG)
-![IPGEO](https://user-images.githubusercontent.com/108043108/225456045-a2a5b61c-b0ba-49a0-9552-92bf0c8d1cf1.JPG)
 
-<br />
-<br />
-<p align="center">
-<b>The next thing I'll do is start the process of creating my virtual machines. Provisioning a VM can be a lengthy process so while I move on to the next step, my VM can be provisioned in the background.</b> <br/>
-</p>
+![image](https://github.com/user-attachments/assets/dddc445a-a85f-4660-a064-df218a9d2e24)
+![image](https://github.com/user-attachments/assets/37742e4c-4950-4430-9e6a-66908b400869)
+![image](https://github.com/user-attachments/assets/fb6aaa05-3aa7-4ea1-8504-749f517ef3be)
+![image](https://github.com/user-attachments/assets/d801a100-4b5a-4a57-9e66-96932272063d)
 
-![Create_VM](https://user-images.githubusercontent.com/108043108/225350437-f6fc6e29-6821-48d5-a379-2099477589ae.JPG)
 
-<br />
-<br />
-<p align="center">
-<b>At this point in the VM creation process I need to make sure that I create a new Resource Group that all of my future resources will be under. A resource group in Azure is a logical grouping of tools, services, configurations and more that exist under one banner so they can be created and deleted at the same time (they share the same lifespan). If I have resources outside of a particular resource group, if I delete that resource group the ones outside of it will still exist. It makes it easier to manage your resources if they're all in the same place. I decided to name this resource group "HoneyPot_Lab" and I name the virtual machine "HoneyPot-VM".</b>
-<br/>
-</p>
 
-![New_Resource_Group](https://user-images.githubusercontent.com/108043108/225352474-3b252a72-20a6-4a56-be2a-6405d4f79cc4.JPG)
-![Create_VM_2](https://user-images.githubusercontent.com/108043108/225353275-82a1ee46-586a-4ce1-9697-440c57528b3c.JPG)
 
-<br />
-<br />
-<p align="center">
-<b>I scroll down on that same page, and I now must choose the size of the VM I am going to provision. In the photo I initially chose Standard_B1s, as circled in green. Later I decided to upgrade it to Standard_B2s which gave 2 CPU cores instead of 1 and more RAM. The first one I chose was just too slow. PowerShell kept crashing and the VM was lagging a lot. After choosing the size of the VM, I created the admin account. I chose a unique admin name and a 30-character password made up of special characters, numbers, and a mix of lowercase and uppercase letters. Since I knew people would be trying to log into the exposed VM through brute forcing and dictionary attacks, a strong password was a necessity. The public inbound port rules, essentially which ports will be open to be able to connect to the VM. At this step you can set multiple authentication methods like SSH, but I chose to only allow RDP. RDP uses port 3389.</b> <br/>
-</p>
 
-![Create_VM_3](https://user-images.githubusercontent.com/108043108/225365594-cf2fe158-d887-4bf9-aca6-d423019404a6.jpg)
 
-<br />
-<br />
-<p align="center">
-<b>The next step is to create a new Network Security Group (NSG). An NSG is basically a Firewall that can create and enforce rules on inbound and outbound traffic to Azure resources. For this project we don't want any rules on traffic. We want to allow anyone and everyone to be able to communicate with the honeypot VM. There is a default inbound rule, so we'll delete that one and create a new inbound rule that will allow EVERYTHING into the VM. On the Destination Port Ranges box, I wrote an asterisk (*) for Anything. This will allow for any port ranges. We'll allow any protocol. For Priority, I set it at 100 because the lower the number the higher the priority. So if there is a rogue rule somewhere, this rule will have priority over it. With these rules set it will allow any and all traffic into our VM. I would NEVER EVER do this in a real production environment.</b> <br/>
-</p>
-
-![Networking_NSG_1](https://user-images.githubusercontent.com/108043108/225353983-66d6e530-783f-4db8-9720-23e575719b5f.JPG)
-![Network_NSG_2](https://user-images.githubusercontent.com/108043108/225367854-f6c685bb-6e96-4981-8f20-2f3a300f1987.JPG)
-![Network_NSG_3](https://user-images.githubusercontent.com/108043108/225367866-761bcc17-991d-4af1-8798-db7bca2acff4.JPG)
-![Network_NSG_4JPG](https://user-images.githubusercontent.com/108043108/225367879-4aff3f39-e232-4404-aa7d-30bac028fc60.JPG)
-
-<br />
-<br />
-<p align="center">
-<b>I review, create, and deploy the VM as the last step. </b> <br/>
-</p>
-
-![Create_VM_4](https://user-images.githubusercontent.com/108043108/225372110-b0dcf0b3-b991-41d5-8fbd-3817cdc56b8e.JPG)
-![Deploying_VM](https://user-images.githubusercontent.com/108043108/225372118-70617d94-0808-4fcd-9a27-0413066d471d.JPG)
-
-<br />
-<br />
-<p align="center">
-<b>While my VM is deploying, I can get started on setting up Log Analytics Workspace. These can all be found in the Azure home dashboard, or you can search for them in the search bar. When I create a Log Analytics Workspace, I make sure to put it in my HoneyPot_Lab resource group so it can be deleted when I delete that resource group. I name the instance LAW-HoneyPot.</b> <br/>
-</p>
-
-![Log_Analytics_Workspace](https://user-images.githubusercontent.com/108043108/225373030-1633fcf3-49cf-4a6f-afa7-33337a60c57c.JPG)
-![Log_Analytics_Workspace_2](https://user-images.githubusercontent.com/108043108/225373041-89acebf7-1328-4b8a-96ee-6c1a946c7df0.JPG)
-
-<br />
-<br />
-<p align="center">
-<b>I now go into Microsoft Defender for Cloud. I do this because I have to provision enroll in some plans to be able to collect and aggregate data for Microsoft Sentinel to be able to use later on. I also need to connect my HoneyPot-VM to Microsoft Defender so it can collect data. At this point my VM has been created so it can be connected to these services. We call these Data Connectors. In the third picture I only turn on the plans for Foundational CSPM and Servers. I'm not running any SQL servers, so it doesn't need to be turned on.</b> <br/>
-</p>
-
-![Microsoft_Defender](https://user-images.githubusercontent.com/108043108/225375649-d2e6bfc2-92d7-4193-af26-3526bf646744.JPG)
-![Microsoft_Defender_2](https://user-images.githubusercontent.com/108043108/225375660-7f554560-6568-4265-a6b1-c5d6f7802774.JPG)
-![Microsoft_Defender_3](https://user-images.githubusercontent.com/108043108/225375671-a99097cf-e19e-4037-98b6-a4f4c710eb94.jpg)
-![Microsoft_Defender_4](https://user-images.githubusercontent.com/108043108/225375684-4825f9d7-a26d-4eb4-a477-ba3aa0b6a9b1.JPG)
 
 
 <br />
 <br />
 <p align="center">
-<b>Since my VM was created, I can go back into Log Analytics Workspaces and connect my VM to that service as well.</b> <br/>
+<b>Lo siguiente que voy a hacer es  crear la máquina virtual que va a actuar de honeypot. A la hora de elegir el grupo de recurso, seleccionen el que crearon recientemente.</p>
+
+![image](https://github.com/user-attachments/assets/da77ff8a-0222-4545-857d-eaea63d7d46a)
+![image](https://github.com/user-attachments/assets/02ac0815-8e6d-4c48-a3e5-6367c311d499)
+![image](https://github.com/user-attachments/assets/bc9c9f6a-b08c-49ce-916b-1a81ed7dcd8a)
+
+
+
+
+
+<p align="center"> Recomiendo elegir 2 vcpu, que es lo suficiente que la maquina necesita para no crashear.</p>
+
+![image](https://github.com/user-attachments/assets/8ebd2c1a-1671-427b-b06f-b0360870243f)
+
+ <p align="center">Cuando vayan a crear el usario y contraseña de la maquina virtual no lo olviden porque con esta informacion vamos a entrar de manera remota a la maquina posteriormente.</p>
+
+![image](https://github.com/user-attachments/assets/33e555a7-a0c0-4678-9dfa-f880e49f69c1)
+
+<p align="center"> En esta seccion seleccionen proximo hasta llegar al apartado de networking.</p>
+
+![image](https://github.com/user-attachments/assets/3f4c9589-0db3-420a-8457-2461b33fae92)
+
+
+ <p align="center">El proximo paso es crear y configurar un nuevo Network Security Group (NSG) que vendria a actuar como nuestro firewall. En este caso no queremos ninguna regla que limite y bloquee tráfico ya que queremos permitir que cualquiera se pueda comunicar con nuestra máquina, La configuracion de la nueva regla que creamos es para que permita cualquier puerto (*)</b> <br/>
 </p>
 
-![Connect_VM_To_LAW](https://user-images.githubusercontent.com/108043108/225376430-5bb177f2-a2e9-4faa-ab8b-64bd23625407.JPG)
-![Connect_VM_to_LAW_2](https://user-images.githubusercontent.com/108043108/225376446-e56ef573-901b-4d52-824d-529dad6a53d5.JPG)
+![image](https://github.com/user-attachments/assets/6394b8a0-db20-4eab-9305-fef735ce99fd)
+![image](https://github.com/user-attachments/assets/72f33793-e8fe-4835-b49d-5900f0d94bb8)
+![image](https://github.com/user-attachments/assets/79f4727e-ce7d-4e6c-8f87-d0db33818a49)
+![image](https://github.com/user-attachments/assets/6d8d46c0-20ca-4ece-af44-317d14a2f57a)
+![image](https://github.com/user-attachments/assets/f111f593-7ca5-4396-b4f9-8a4e74c004bd)
+![image](https://github.com/user-attachments/assets/c2172f70-55ff-4925-a404-231896192c1f)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br />
+<br />
+
+<p align="center">
+<b>Mientras se crea la máquina virtual,podemos empezar creando nuestro Log Analytics Workspace. Recuerden elegir siempre el grupo de recursos creado para este lab  .</b> <br/>
+</p>
+
+![image](https://github.com/user-attachments/assets/84529b87-e698-4328-b032-04c547ab3b05)
+![image](https://github.com/user-attachments/assets/d83ba323-affc-492a-b9df-9c8bddd9b7c4)
+![image](https://github.com/user-attachments/assets/db0d9768-212f-4731-a79b-6ac1a62f8819)
+![image](https://github.com/user-attachments/assets/ef5f6ac7-5723-4131-a646-479a51668c62)
+
+
+
+
 
 <br />
 <br />
 <p align="center">
-<b>I can now create a Microsoft Sentinel resource and connect it to my VM. </b> <br/>
+<b>Ahora nos dirigimos a Microsoft Defender for Cloud para acceder a un plan que nos permita tomar y agregar data para nuestro SIEM, Microsoft Sentinel, para usar luego.
+</b> <br/>
 </p>
 
-![Azure_Sentinel](https://user-images.githubusercontent.com/108043108/225377514-f5462e65-4b40-4823-a613-7088cfeff63a.JPG)
-![Azure_Sentinel_2](https://user-images.githubusercontent.com/108043108/225377521-f4d379cf-58d7-4aca-aee0-1a80cb9aceac.JPG)
+![image](https://github.com/user-attachments/assets/38aff52f-f412-4069-9e1e-952e7c61fbe3)
+![image](https://github.com/user-attachments/assets/7885fd07-f0fd-4f2d-a9e0-e0d8e734b591)
+![image](https://github.com/user-attachments/assets/d1aa3714-c391-428b-99a7-dcdce57813b8)
+![image](https://github.com/user-attachments/assets/fa2ad8cc-c88c-40ef-9882-7b39454ecfa5)
+
+
+
+
+
+
+
+
+
+
+
+
+<br />
+<p align="center">
+<b>Una vez ya creada la maquina virtual, podemos ir al Log Analytics Workspaces y conectar nuestra VM al servicio  .</b> <br/>
+</p>
+
+![image](https://github.com/user-attachments/assets/bf7784b7-3001-4fbb-a913-bbfdbe08b0e3)
+![image](https://github.com/user-attachments/assets/0139f03a-ab84-4d39-87e3-e790b9434944)
+![image](https://github.com/user-attachments/assets/4ce549a1-145e-49be-ac6c-2ef093bb99df)
+
+
+
 
 <br />
 <br />
 <p align="center">
-<b>Now that everything is set up in the Azure dashboard, I can go into my VM and set things up there. The first thing I need to do is get my VM's public IP address so I can Remote Desktop (RDP) into it. I go into the Virtual Machines tab in Azure and navigate into the HoneyPot VM. Highlighted in my VM's Public IP.</b> <br/>
+<b>Ahora debemos crear una instancia de Microsoft Sentinel y conectarla a nuestra VM. En mi caso la VM no aparece porque ya la conecte previamente, pero a ustedes les va a salir para seleccionar y luego la agregan </b> <br/>
 </p>
 
-![Getting_VM_Public_IP](https://user-images.githubusercontent.com/108043108/225379998-5bcad4c5-c878-4249-8384-34e1581dc35d.JPG)
+![image](https://github.com/user-attachments/assets/e32f9b73-00c9-47e1-be01-812d1b734d0a)
+
+
+<br />
+<br />
+<p align="center">
+<b>Ahora que ya esta todo configurado en el dashboard de Azure, podemos entrar a la vm y configurarla, para eso necesitamos obtener la direccion IP para entrar via Escritorio Remoto.</b> <br/>
+</p>
+
+![image](https://github.com/user-attachments/assets/56e07206-3a8b-46dd-88d0-6a3978d3af18)
+
 
 <br />
 <br />
