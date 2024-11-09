@@ -178,7 +178,7 @@
 <br />
 <br />
 <p align="center">
-<b>From here I can log into my VM via Remote Desktop. I open up Remote Desktop on my native PC, enter the public IP address and credentials needed and connect in! I configure the HoneyPot a bit.</b> <br/>
+<b>Abrimos el . I open up Remote Desktop on my native PC, enter the public IP address and credentials needed and connect in! I configure the HoneyPot a bit.</b> <br/>
 </p>
 
 ![Connect_With_RDP](https://user-images.githubusercontent.com/108043108/225381141-3514bcc6-3417-4281-ad67-1b4af20edfd5.JPG)
