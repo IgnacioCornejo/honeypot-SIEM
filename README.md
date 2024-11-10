@@ -178,52 +178,55 @@
 <br />
 <br />
 <p align="center">
-<b>Abrimos el . I open up Remote Desktop on my native PC, enter the public IP address and credentials needed and connect in! I configure the HoneyPot a bit.</b> <br/>
+<b>Abrimos el escritorio remoto e ingresamos las credenciales que creamos cuando hicimos la VM .</b> <br/>
 </p>
 
-![Connect_With_RDP](https://user-images.githubusercontent.com/108043108/225381141-3514bcc6-3417-4281-ad67-1b4af20edfd5.JPG)
-![Logging_Into_VM_Via_RDP](https://user-images.githubusercontent.com/108043108/225381164-d6591c73-4cf0-4fee-85c9-22d56abfc8ab.JPG)
-![Logging_Into_VM_via_RDP_2](https://user-images.githubusercontent.com/108043108/225662102-2a73273a-c0f7-4424-833f-2d981f5859e0.JPG)
+![image](https://github.com/user-attachments/assets/7c018091-84da-427e-8294-8447f3bf9521)
+
 
 <br />
 <br />
 <p align="center">
-<b>After I'm successfully logged into the VM via RDP, I navigate to Event Viewer. Event Viewer logs everything that goes on in a windows system. It gives each action an EventID so it can be more easily navigated or browsed by the EventID. For this project we are concerned specifically with EventID 4625, which is Failed Logon Attempts. These logs can be found in the Security tab. In the pictures below, I run another instance of Remote Desktop and try to log into the VM with the wrong password. This creates a failed logon attempt which is then logged and recorded in Event Viewer.</b> <br/>
+<b>Una vez ya logueado en la VM, nos dirigmos al visor de eventos de windows (Event Viewer), que es donde se registra todo lo que sucede en un sistema Windows.Le asigna a cada acción un EventID para que pueda ser facilmente navegado mediante el EventID, para este proyecto nos interesa principalmente el EventID 4625 que es el de Intentos de Logon Fallidos(Failed Logon Attemps).Estos logs los podemos encontrar en la pestaña de seguridadn, en mi caso tengo varios de estos intentos fallidos porque estoy mostrando la maquina ya atacada, pero si ustedes quieren ver este log pueden hacer un intento fallido de inicio de sesion para que este aparezca.</b> <br/>
 </p>
 
-![Event_Viewer](https://user-images.githubusercontent.com/108043108/225381724-2603d72a-5334-479d-b555-c1d0baaeb875.JPG)
-![Event_Viewer_2](https://user-images.githubusercontent.com/108043108/225381737-0bc2d129-b045-4099-a5fe-d34b4d43f673.JPG)
+![image](https://github.com/user-attachments/assets/4584e0f0-383a-4e34-af15-2254d328db09)
 
-
-<br />
-<br />
-<p align="center">
-
+![image](https://github.com/user-attachments/assets/562053e9-2a4a-47b3-b4e1-5d542d7e6a68)
 
 
 
 <br />
 <br />
 <p align="center">
-<b>To make sure that everyone on the internet can discover my VM I need to disable the windows firewall. I do this by going into the windows search bar and searching wf.msc. Once inside the windows firewall, I begin disabling everything. I then open up CMD in my native computer and try to ping the VM again. This time it receives replies from the VM because the firewall is no longer blocking ICMP requests. </b> <br/>
+
+
+
+
+<br />
+<br />
+<p align="center">
+<b>Para asegurarnos de que cualquiera en internet pueda descubrir nuestra VM facilmente, necesitamos desactivar el Firewall de WindowsTo make sure that everyone on the internet can discover my VM I need to disable the windows firewall. </b> <br/>
 </p>
 
-![Turn_Off_Firewall](https://user-images.githubusercontent.com/108043108/225385096-6cdeaa2a-3411-46fa-bad1-0afcee031860.JPG)
-![Turn_Off_Firewall_2](https://user-images.githubusercontent.com/108043108/225385112-d4ada032-3cdc-4650-b60a-0a373cddfd17.JPG)
+![image](https://github.com/user-attachments/assets/1a662d87-7e05-4562-9356-73fb741708ca)
+![image](https://github.com/user-attachments/assets/75d604b9-17a2-4a08-8bdb-4731a28b7aec)
+
 
 <br />
 <br />
 <p align="center">
-<b>Now that my VM is exposed to the internet I can begin the setup of my PowerShell script. It is the heart of this project. This PowerShell script will parse Event Viewer specifically looking for EventID 4625. It will then send the IP address from the failed logon attempts to the website IPgeolocation.io via an API. The reason I did this is because the IP address in event viewer does not contain any geographical location. It was easier to send the data to a system dedicated to pulling that information out and sending it back to myself rather than building it from scratch. The PowerShell script will then receive all that geographical data and save it as a string in a logfile named failed_rdp.log. I will use this logfile later on in the project to be able to map the attacks live in Microsoft Sentinel.</b> <br/>
+<b>Ahora que nuestra VM esta expuesta al internet podemos empezar configurando el script de Powershell, este script va a parsear Event Viewer especificamente buscando por el EventID 4625. Luego va a enviar la direccion IP desde los Failed Logon Attemps hacia la pagina de IPgeolocation a traves de una API. El script va a recibir toda la data geográfica y la va a guardar como una cadena de texto (string) en un archivo de log llamado failed_rdp.log, a futuro vamos a usar este archivo para mapear los ataques en Microsoft Sentinel</b> <br/>
 </p>
 
-![Create_PS_Script](https://user-images.githubusercontent.com/108043108/225409638-0f9735a1-eca0-446f-afb7-74ef0d427ebf.JPG)
+![image](https://github.com/user-attachments/assets/776225ba-59ab-40d7-a30a-df495b415e73)
+
 
 
 <br />
 <br />
 <p align="center">
-<b>After I open PowerShell, I paste my script that was written before the start of this project. I then save that script to the desktop as Log_Exporter. At this point you should go and make a profile on IpGeolocation to get your API. You'll paste your own API into the PS script. You'll get 1000 free calls, but they can go fairly quickly, so I recommend going back into the Windows Firewall settings and turning them back ON until you're done setting up your Log Analytics Workbooks Custom Fields later on in the lab. After those are configured, you can then turn off the Firewall.</b> <br/>
+<b>Una vez abierto el Powershell pegamos el script que lo pueden encontar en el github, luego guardamos en script en el escritorio como Log_Exporter. Llegado a este punto ya deberian crearse una cuenta en IPgeolocation para que les otorgue la API key que vamos a estar usando en el script.</b> <br/>
 </p>
 
 ![Create_PS_Script_2](https://user-images.githubusercontent.com/108043108/225410802-01a83b34-e79a-4516-8bdb-70c01baa76d7.JPG)
@@ -232,7 +235,7 @@
 <br />
 <br />
 <p align="center">
-<b>I run my Log_Exporter script. So that it was easier to read I made it so that the script outputs in pink and black. The API_KEY you see has been changed after I finished the project. In the first photo you can see that my script is working just fine. The output you see is the first failed login that I did earlier. The second photo shows how the data is saved into the failed_rdp logfile in string format. I included some sample data in this file because later it will be needed to train the AI in Log Analytics Workbooks and Microsoft Sentinel. More data equals more precision.</b> <br/>
+<b>Ejecutamos el script habiendo ya ingresado nuestra API key donde se encuentran las comillas vacias. So that it was easier to read I made it so that the script outputs in pink and black. The API_KEY you see has been changed after I finished the project. In the first photo you can see that my script is working just fine. The output you see is the first failed login that I did earlier. The second photo shows how the data is saved into the failed_rdp logfile in string format. I included some sample data in this file because later it will be needed to train the AI in Log Analytics Workbooks and Microsoft Sentinel. More data equals more precision.</b> <br/>
 </p>
 
 ![Run_PS_Script](https://user-images.githubusercontent.com/108043108/225412357-ee390c08-c131-4658-b6d0-b2c6f0485850.JPG)
