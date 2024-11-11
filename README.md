@@ -239,33 +239,45 @@
 <br />
 <br />
 <p align="center">
-<b>Ejecutamos el script habiendo ya ingresado nuestra API key donde se encuentran las comillas vacias($API_KEY      = "").La salida que ven The output you see is the first failed login that I did earlier. The second photo shows how the data is saved into the failed_rdp logfile in string format. I included some sample data in this file because later it will be needed to train the AI in Log Analytics Workbooks and Microsoft Sentinel. More data equals more precision.</b> <br/>
+<b>Ejecutamos el script habiendo ya ingresado nuestra API key donde se encuentran las comillas vacias($API_KEY      = "").La salida que ven del script es como se ve cuando alguien falló un intento de inicio de sesion.A partir de ahora deben esperar a que la maquina sea tacada para que se empiecen a generar los logs</b> <br/>
 </p>
 
-![Run_PS_Script](https://user-images.githubusercontent.com/108043108/225412357-ee390c08-c131-4658-b6d0-b2c6f0485850.JPG)
-![Training_Sentinel](https://user-images.githubusercontent.com/108043108/225412372-30c65d96-6678-4ac1-a3a9-d0f3d8331342.JPG)
+![image](https://github.com/user-attachments/assets/b37c0e44-0ddb-4df6-97a9-b05f2a0ae3a0)
 
 <br />
 <br />
 <p align="center">
-<b>At this point to test if the PowerShell script is working, I failed another logon attempt. As you can see someone has already found my VM and started to try and brute force it. This person was in Tunisia. They found it so fast, it was a bit annoying. I could have blocked his IP or enabled the firewall again until I was finished completely with my setup, but this data was perfect to train the AI in Azure, so I let it go at the time. In hindsight it was a bad move. The free API from IPgeolocation.io only allowed for 1000 calls. This person in Tunisia hit that limit very quickly, ruining my project. I had to pay $15 for an extra 150k API calls to save my project. </b> <br/>
+<b</b>Las siguientes imagenes muestran como la data es guardada en el archivo de log failed_rdp en formato de cadena de texto (string).   <br/>
 </p>
 
-![Showing_PS_Script_Someone_Already_Found_VM](https://user-images.githubusercontent.com/108043108/225413356-343d9ae2-240d-4841-b41f-62cff77e51ab.JPG)
+![image](https://github.com/user-attachments/assets/89c8da17-eb52-4171-bbe3-23fac6be4a9b)
+![image](https://github.com/user-attachments/assets/1ffcd239-75db-4f12-94be-785d363661be)
+![image](https://github.com/user-attachments/assets/394badac-c746-4c1b-9678-078c0f11ee49)
 
-https://user-images.githubusercontent.com/108043108/225419861-a5c9bce1-3f6d-42e9-9bd4-dcd7ca816a33.mp4
+
+
+
+
 
 <br />
 <br />
 <p align="center">
-<b>Now that I know my PowerShell script is working as it should, I head over to Log Analytics Workbooks to create a custom log so that I can bring my failed_rdp log into Log Analytics. In Log Analytics I navigate to my VM and create a Legacy Custom Log. It asks for a sample log, which is inside the VM. I can't download the logfile from the VM to my native computer, so I have to open the logfile inside the VM, copy the contents, go back to my native computer and open Notepad, paste the copied contents in and save the file to my desktop. From there I can import it into Log Analytic Workbooks. This sample data will be used to train Log Analytics.</b> <br/>
+<b>Una vez corroborado que el script funciona correctamente, podemos dirigirnos al Log Analytics Workbooks para crear un log personalizado para traer los failed_rdp logs dentro del Log Analytics de Azure.Lo que tenemos que hacer ahora es copiar el contenido de nuestro archivo failed_rdp que está en nuestra vm,  luego crear el mismo archivo en nuestra maquina Host, y pegar el contenido  para poder seleccionarlo como sample log.</b> <br/>
 </p>
 
-![Custom_Logs](https://user-images.githubusercontent.com/108043108/225421446-5a0c5c4f-62a0-4a07-bb6a-b36edd43b7fd.JPG)
-![Custom_Log_2](https://user-images.githubusercontent.com/108043108/225421932-a4d520b3-5f9a-4851-badb-e07744735144.JPG)
-![Custom_Log_3](https://user-images.githubusercontent.com/108043108/225421947-dcaadf65-e212-41ae-8e83-322a310df6f7.JPG)
-![Custom_Log_4](https://user-images.githubusercontent.com/108043108/225421956-8dd57a76-b0b0-44a0-8f10-675ba6b1dfa9.JPG)
-![Custom_Log_5](https://user-images.githubusercontent.com/108043108/225421995-664b1d05-5ba7-48a3-9e90-a1c5eedeed36.JPG)
+![image](https://github.com/user-attachments/assets/6f9fc0b2-5f2c-4780-b75f-2f7c8e8abfe7)
+![image](https://github.com/user-attachments/assets/055d2059-5567-4232-b4e7-4bb0c5b9f6df)
+![image](https://github.com/user-attachments/assets/cfa35f9e-5b3d-45b2-8b43-473894985f12)
+![image](https://github.com/user-attachments/assets/3c15bdbd-b791-42ee-8728-2cb246afda46)
+![image](https://github.com/user-attachments/assets/f93e5d26-5d76-471f-9978-727dcf21ca92)
+![image](https://github.com/user-attachments/assets/49e7aa92-b3f8-4d37-8119-75e72ac5ccf5)
+
+
+
+
+
+
+
 
 <br />
 <br />
