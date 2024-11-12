@@ -226,7 +226,7 @@
 <br />
 <br />
 <p align="center">
-<b>Una vez abierto el Powershell pegamos el script que lo pueden encontar en el github, luego guardamos en script en el escritorio como Log_Exporter. Llegado a este punto ya deberian crearse una cuenta en IPgeolocation para que les otorgue la API key que vamos a estar usando en el script.</b> <br/>
+<b>Una vez abierto el Powershell pegamos el script que lo pueden encontar subido en el github como Powershell Script, luego guardamos en script en el escritorio como Log_Exporter. Llegado a este punto ya deberian crearse una cuenta en IPgeolocation para que les otorgue la API key que vamos a estar usando en el script.</b> <br/>
 </p>
 
 ![image](https://github.com/user-attachments/assets/b812dd89-3f99-4991-9234-53b7b9033306)
@@ -293,63 +293,43 @@
 <br />
 <br />
 <p align="center">
-<b>While that is being provisioned, the creation will be instant, but the data won't be synced from the VM to Log Analytics for a while. I decided to query the Event Viewer, which should have already been synced. You can see in picture 1 that it is indeed showing all the logs. After a little while I decided to query the newly created FAILED_RDP_WITH_GEO custom log, and it is indeed showing information meaning that the VM and Log Analytics as synced and is sending/receiving data. </b><br/>
+<b>La creacion del log personalizado va a ser instantanea, pero la sincronización de la data de la VM hacia el Log Analytics va a tardar 
+ un tiempo. Pueden ir probando el siguiente query para ver si ya esta sincronizado: FAILED_RDP_WITH_GEO.</b><br/>
 </p>
 
-![Security_Event_4625](https://user-images.githubusercontent.com/108043108/225425000-75d4b1ae-fa60-48a4-af30-8fc5ab52cb8f.JPG)
-![Failed_RDP_LOGS](https://user-images.githubusercontent.com/108043108/225425211-162958fe-13cb-455a-99bf-2b24897a5a29.JPG)
+![image](https://github.com/user-attachments/assets/bbe71a18-4310-4a58-b896-7d587be78987)
+![image](https://github.com/user-attachments/assets/4c594994-292f-4b0e-b873-79a1e9308c96)
+![image](https://github.com/user-attachments/assets/269c98f8-2c12-42c2-9e69-e010b24f847a)
 
-<br />
-<br />
-<p align="center">
-<b>Now I have to go in and extract the fields my log uses. This will allow me to later use those fields in Microsoft Sentinel. I right-click a failed rdp login log that has all the raw data in it from my PowerShell script and highlight the data I want. I then name the field that data is going to be in. Once that extraction happens, the Log Analytics AI looks at all of my other sample data and actual logs that were generated and sees if it can pull the correct data. This part is where I have to go in and correct any errors the AI has by again highlighting the correct data point it needs to look for. To do this, I have to scroll through the list (higlighted in blue in picture 4), right click any that is wrong and re-highlight the correct information I want it to pull. The custom fields you're going to create at this stage is: latitude, longitude, destinationhost, username, sourcehost, state, country, label, timestamp.</b><br/>
-</p>
 
-![Extract_Fields](https://user-images.githubusercontent.com/108043108/225436517-0a82f48e-82c8-45cf-b351-634ee8ba41c7.JPG)
-![extract_data_2](https://user-images.githubusercontent.com/108043108/225436525-d57e194f-8a55-4e9a-915b-9d8a413a83e4.JPG)
-![extract_data_3](https://user-images.githubusercontent.com/108043108/225436533-e68158a6-3cd5-4f84-a6b2-1329a1339016.JPG)
-![extract_data_4](https://user-images.githubusercontent.com/108043108/225436540-4ec75b85-8076-493e-9fb7-8c5bc24cba4b.JPG)
 
 
 <br />
 <br />
 <p align="center">
-<b>I waited a little while to see if the fields would populate properly. They all do except sourcehost.CL and I couldn't figure out why. I deleted that field and extracted it multiple times but no matter what I did it would not populate. I could not use an unpopulated field in my sentinel live map, so in the end I decided to delete it and not use that data point at all.</b>  <br/>
+<b>Lo último que queda por hacer es la creación del mapa, para esto necesito crear un nuevo Workbook en Microsoft Sentinel. Al crear uno ya nos muestra widgets y gráficos que estan predeterminados, los eliminamos para poder empezar a configurar nuestro query que lo que va a hacer es consultar la data y los campos del Log Analytics, basicamente le estamos mostrando a Microsoft Sentinel el conjunto de data que tiene que usar.El query está subido en el github como Workbook Query</b><br/>
 </p>
 
-![Sourcehost_wouldnt_update](https://user-images.githubusercontent.com/108043108/225451005-edabe896-94b1-4d11-8853-42e4a4ce8e83.JPG)
-![sourcehost_wouldnt_update_2](https://user-images.githubusercontent.com/108043108/225451011-80b1dbad-2e90-4407-bfa5-5c516b66a991.JPG)
+![image](https://github.com/user-attachments/assets/f3898907-ecc4-4728-a278-6dc244689f3f)
+![image](https://github.com/user-attachments/assets/56dd7c21-69c2-42a4-ac9f-eae9b504be40)
+![image](https://github.com/user-attachments/assets/70e116ba-9945-4513-ac66-959fb35dda41)
+![image](https://github.com/user-attachments/assets/c8ce8c79-b727-4062-bd5c-5093bbaa5b01)
+![image](https://github.com/user-attachments/assets/340f1666-cbf5-47e7-afe6-4497f8134e47)
+
+
+
+
+
+
+
+
+
+
 
 <br />
 <br />
 <p align="center">
-<b>The next step taken was to begin setting up my geomap that will pinpoint and map out where the attacks, or login attempts were coming from. I do this by navigating to Microsoft Sentinel. In the first picture we can see that the SIEM has been collecting data properly and categorizing it. I did not set any alerts for this project but it was certainly possible, maybe for a future video. We can see in this picture that there are nearly 10k events and 6.9k security events, coming from Event Viewer in the VM with 2.3k failed RDP attempts. I haven't even finished setting up this project but the person from Tunisia was hard at work trying to brute force into my VM. Good luck ha ha ha!</b>  <br/>
-</p>
-
-![Setting_Geomap](https://user-images.githubusercontent.com/108043108/225451297-e0c57af2-5333-4b6f-8fff-79b11b816e77.JPG)
-
-<br />
-<br />
-<p align="center">
-<b>Moving on. To create the map, I want I'll need to create a new workbook in Sentinel. After clicking into workbooks, there is some default graphs or widgets in there. I want to delete those. After deleting those I then get started on creating a new workbook.</b>  <br/>
-</p>
-
-![setting_geomap_2](https://user-images.githubusercontent.com/108043108/225452457-2c805584-bee1-4c4b-adb3-aa73726c0d0f.JPG)
-![setting_geomap_3](https://user-images.githubusercontent.com/108043108/225452473-99fd3ef3-04ff-49e6-aecf-94793b7e60f2.JPG)
-![setting_geomap_4](https://user-images.githubusercontent.com/108043108/225452571-ef8a7a55-a541-44ba-9269-24a32d56d14c.JPG)
-
-<br />
-<br />
-<p align="center">
-<b>To create the map, I need to add a query. Remember, I need to query the data and the fields from Log Analytics. Basically I'm pointing out the dataset I want Microsoft Sentinel to use. In the query I tell it to specifically exclude (!=) the data points that include "Samplehost" since those aren't real attacks and I don't want them to populate on the map.</b>  <br/>
-</p>
-
-![setting_geomap_5](https://user-images.githubusercontent.com/108043108/225453225-24b50358-ac8c-4897-9e44-8d21f4075239.JPG)
-
-<br />
-<br />
-<p align="center">
-<b>After I queried the data points I want, I now have to choose how I want to express/visualize them. In this case I want them visualized as a map! I choose the map setting and then configure the map to plot the attacks by latitude/longitude. I could do it by country but some of the attacks coming through was not including the country. I changed the metric settings to make the bubbles bigger using the event counts. The more events the bigger the bubble. I apply the settings and my map is done!</b>  <br/>
+<b>Luego de creación del query solo queda elegir como quiero que se visualicen estos datos, en este caso vamos a elegir mapa y lo configuramos para que  para que grafique los ataques por latitud y longitud.</b>  <br/>
 </p>
 
 ![setting_geomap_6](https://user-images.githubusercontent.com/108043108/225453707-62496864-0c33-4d3d-988c-3260b07e9c9b.JPG)
