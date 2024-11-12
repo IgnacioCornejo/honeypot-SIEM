@@ -239,7 +239,7 @@
 <br />
 <br />
 <p align="center">
-<b>Ejecutamos el script habiendo ya ingresado nuestra API key donde se encuentran las comillas vacias($API_KEY      = "").La salida que ven del script es como se ve cuando alguien falló un intento de inicio de sesion.A partir de ahora deben esperar a que la maquina sea tacada para que se empiecen a generar los logs</b> <br/>
+<b>Ejecutamos el script con la tecla  F5, habiendo ya ingresado nuestra API key donde se encuentran las comillas vacias($API_KEY      = "").La salida que ven del script es como se ve cuando alguien falló un intento de inicio de sesion.A partir de ahora deben esperar a que la maquina sea tacada para que se empiecen a generar los logs</b> <br/>
 </p>
 
 ![image](https://github.com/user-attachments/assets/b37c0e44-0ddb-4df6-97a9-b05f2a0ae3a0)
@@ -271,23 +271,24 @@
 ![image](https://github.com/user-attachments/assets/3c15bdbd-b791-42ee-8728-2cb246afda46)
 ![image](https://github.com/user-attachments/assets/f93e5d26-5d76-471f-9978-727dcf21ca92)
 ![image](https://github.com/user-attachments/assets/49e7aa92-b3f8-4d37-8119-75e72ac5ccf5)
-
-
-
-
-
-
-
+![image](https://github.com/user-attachments/assets/c14d1f86-3908-4a7c-9ed3-4cd3d576be26)
+![image](https://github.com/user-attachments/assets/4151d54c-cce2-4519-89ae-c2439a674322)
 
 <br />
 <br />
 <p align="center">
-<b>Next it asks for the collection path. The collection path is where the log lives in the VM, so it asks for a path that Log Analytics can take to reach that logfile. The path to that file is C:\ProgramData\failed_rdp.log. If this path is wrong, Log Analytics wouldn't be able to collect the log information. Next, we have to name our custom log. I decided to name it FAILED_RDP_WITH_GEO and the .CL (Custom Log) will automatically be appended to it. When querying the database later this will basically be the name of the table. We then create the custom log. </b> <br/>
+<b>En esta sección pregunta por la ruta de recopilación que es donde los logs se encuentran en nuestra VM, la ruta es C:\ProgramData\failed_rdp.log. Luego tenemos que nombrar nuestra log personalizado , pueden nombrarlo como quieran, en este caso usé FAILED_RDP_WITH_GEO y por ultimo lo creamos. </b> <br/>
 </p>
 
-![Custom_Log_6](https://user-images.githubusercontent.com/108043108/225422804-46df9880-9734-420c-84a9-e18ec3a68b57.JPG)
-![Custom_Log_7](https://user-images.githubusercontent.com/108043108/225423680-580feffc-72e3-4eaf-9fd0-57d0376976b3.JPG)
-![Custom_Log_8](https://user-images.githubusercontent.com/108043108/225424273-b392d383-4025-4206-b406-0fd79058d263.JPG)
+![image](https://github.com/user-attachments/assets/e3b6ab66-99c0-4d2c-98a9-0b16596c3955)
+![image](https://github.com/user-attachments/assets/6fe8558f-c772-474c-ae60-69f0afc3ea82)
+
+
+
+
+
+
+
 
 <br />
 <br />
