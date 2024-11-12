@@ -315,6 +315,7 @@
 ![image](https://github.com/user-attachments/assets/70e116ba-9945-4513-ac66-959fb35dda41)
 ![image](https://github.com/user-attachments/assets/c8ce8c79-b727-4062-bd5c-5093bbaa5b01)
 ![image](https://github.com/user-attachments/assets/340f1666-cbf5-47e7-afe6-4497f8134e47)
+![image](https://github.com/user-attachments/assets/ee45c2cf-eee2-47c6-a3aa-9599b9b3d226)
 
 
 
@@ -323,101 +324,33 @@
 
 
 
+
+
+
+
+<br />
+<br />
+<p align="center">
+<b>Luego de creación del query solo queda elegir como quiero que se visualicen estos datos, en este caso vamos a elegir mapa y lo configuramos de la siguiente manera:.</b>  <br/>
+</p>
+
+![image](https://github.com/user-attachments/assets/67d6abac-77d1-4fc2-8dd8-cdcdc6c8d392)
+![image](https://github.com/user-attachments/assets/2986d47c-be7c-4185-ac91-381c2494795d)
+![image](https://github.com/user-attachments/assets/d5db7e7e-62b0-4568-b8df-993d50d9ecfa)
+![image](https://github.com/user-attachments/assets/54a57d85-6bb8-4256-b873-e62c10da5bf3)
+![image](https://github.com/user-attachments/assets/69db7d0a-cc78-4a23-ae98-3ce074b2f1be)
 
 
 
 <br />
 <br />
 <p align="center">
-<b>Luego de creación del query solo queda elegir como quiero que se visualicen estos datos, en este caso vamos a elegir mapa y lo configuramos para que  para que grafique los ataques por latitud y longitud.</b>  <br/>
+<b>En esta ultima imagen muestro el resultado final de este proyecto, en el transcurso de pocos dias recibí mas de 3000 ataques de diferentes partes del mundo, como se puede apreciar en el mapa. El lugar principal donde mas recibí estos intentos de login fallidos es Brasil con mas  2000 de intentos y Rusia con casi 1000 intentos, pero se pueden ver ataques en todas partes del mundo,como Estados Unidos desde diferentes estados, o China e India. </b>  <br/>
 </p>
 
-![setting_geomap_6](https://user-images.githubusercontent.com/108043108/225453707-62496864-0c33-4d3d-988c-3260b07e9c9b.JPG)
-![setting_geomap_7](https://user-images.githubusercontent.com/108043108/225454149-b35a2412-574f-474a-acca-3b541148208a.JPG)
-![setting_geomap_8](https://user-images.githubusercontent.com/108043108/225454159-593b96e9-e6dc-4cbc-b6fa-bcb955495bfd.JPG)
+![image](https://github.com/user-attachments/assets/c5bb9e0e-8196-45ce-acf8-06b771f4bd93)
 
 
-<br />
-<br />
-<p align="center">
-<b>After a few hours and right before I decided to stop the project, you can see that there was a total of 10,529 attacks or failed login attempts. 20 were in the USA, which was me testing the PowerShell script, 9 from Cambodia, and a whopping 10.5k from Tunisia. They were using automated brute-forcing software to try thousands of different password combinations and usernames. There were even more attempts, but my PowerShell script had to be stopped and started multiple times. This is why it's important to use strong passwords and uncommon usernames! The second picture is the number of API calls I had that day. All of them are not shown because I had to upgrade the number of calls I could make. </b>  <br/>
-</p>
-
-![Stopped_Because_of_API_Calls_Limit_At_150k](https://user-images.githubusercontent.com/108043108/225454550-20b2f3d6-5593-44cf-8bbc-290fb941da8c.JPG)
-![API_requests](https://user-images.githubusercontent.com/108043108/225455054-0576753d-b3d0-40dd-aa4b-70246b1616e8.JPG)
-
-<br />
-<br />
-<p align="center">
-<b>After I was done, I had to delete the resource group I created for this project. If I left it alone, it would eat up my $200 credit I would need for future projects. The reason I put everything under one resource group is for this exact reason, easier deletion of the resources I created. Now nothing would be left behind.</b>  <br/>
-</p>
-
-![Deleting_Resources](https://user-images.githubusercontent.com/108043108/225455713-94e78229-b9ec-4f2e-ae17-24ed2636f7a1.jpg)
-![deleting_resources_2](https://user-images.githubusercontent.com/108043108/225455718-29980ca4-9976-4abf-955f-573f6d55fdd9.JPG)
-
-<br />
-<br />
-<h2 align="center">Decided To Run The Lab Again.</h2>
-</p>
-
-<br />
-<br />
-<p align="center">
-<b>I decided to do the lab again. I wanted to give attackers more time to attack the exposed VM so more locations could be represented on the world map. My decision paid off. I’m very happy that this time a more diverse group of threat actors decided to attack my VM, which resulted in this version of the world map.</b>  <br/>
-</p>
-
-![worldmap2](https://user-images.githubusercontent.com/108043108/226672121-d80091a0-6f7b-4f1d-b5bd-d9416823c6bf.JPG)
-
-<br />
-<br />
-<p align="center">
-<b>I noticed an issue while running this lab a second time. Periodically my PowerShell script would stop updating. It was still running, but no new entries would be generated for 5 – 15 minutes. I thought that was strange. I knew for a fact there were many different countries attempting to brute-force their way into the VM, so there should be a steady stream of new entries. Especially because I set the refresh rate in this PS script to 300 Milliseconds, down from 1 second in the earlier lab. I decided to investigate what was happening. The first step in my investigation was to compare the number of security events where Event ID = 4625 against the number of Failed_RDP_Custom_Log’s generated. I accomplish this by writing queries in Log Analytics Workbook.</b>  <br/>
-</p>
-
-![Security_Event_ID](https://user-images.githubusercontent.com/108043108/226673169-7b2f64a3-7ab1-4918-98e8-b680a553aabf.jpg)
-<p align="center"><i>After writing my query we can see here that there was a total of 9282 EventID 4625 Security Events. This means that threat actors attempted to log into my VM 9282 times.</i></p>  <br/>
-
-![Failed_RDP_Log](https://user-images.githubusercontent.com/108043108/226673194-787f3452-309d-4d0b-a375-c653fb16c4b1.JPG)
-<p align="center">
-<i>After writing this query we can see it returned a total of 3892 records, which means that my Custom Log only captured 3892 login attempts. Quite a bit away from 9282.</i>
-</p>
-
-<br />
-<br />
-<p align="center">
-<b>Okay, there is a discrepancy here. Both of those number of records should match, or at least be very close to each other. Next I decided to look at my API usage for today. It shows 3541 API requests. It's much closer to my Custom Log FAILED_RDP_CUSTOM_LOG. So now I know it isn't my VM that is failing to send the data to my custom log.</b>  <br/>
-</p>
-
-![API](https://user-images.githubusercontent.com/108043108/226676332-d906603b-59c1-4ad0-94c0-fb665bb26a73.JPG)
-
-<br />
-<br />
-<p align="center">
-<b>Lastly, I chose to go into Microsoft Sentinel and see what the dashboard is showing. My PowerShell Script was still running in the background so the numbers aren't an exact match because these screenshots were taken a few minutes apart. Again, it is showing a number (4,100) that is much closer to the FAILED_RDP_CUSTOM_LOG query.</b>  <br/>
-</p>
-
-![Sentinel](https://user-images.githubusercontent.com/108043108/226676717-a08eb2c2-6ae1-46f7-8d78-7359b2d610bf.JPG)
-
-<br />
-<br />
-<h2 align="center">Conclusions</h2>
-
-<br />
-<br />
-<p align="center">
-<b>What I suspect is happening is that the Windows Event Viewer is working just fine. It is properly logging ALL login attempts and is showing the actual number of attempts that has happened. The weak link in this problem is the PowerShell script. The reason my PowerShell script was pausing for extended amounts of time is because it was being overwhelmed. I set the refresh rate to 300 Milliseconds, but the actual login attempts from several different attackers was much more than 1 attempt per 300 Milliseconds. My PowerShell script was a bottleneck. If it could record each attempt as it happened, it would show the actual number of attempts and be in line with Event Viewer. It could only record 1 attempt per 300 Milliseconds, so some login attempts were being lost or backlogged (I doubt it was backlogged), which lead to the discrepancy we are seeing. Perhaps in the future I could lower the refresh rate even more to allow more login attempts to go through.</b>  <br/>
-</p>
 
 
-<br />
-<br />
 
-<!--
- ```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
-```
---!>
