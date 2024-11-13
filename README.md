@@ -348,7 +348,8 @@
 
 <h2>Conclusiones</h2>
 
-<b>Esta es solo una de las muchas cosas<b/>
+<b>A lo largo de este laboratorio, aprendí a usar un SIEM (Security Information and Event Management), específicamente Microsoft Sentinel, para monitorear y detectar ataques cibernéticos. Al crear una máquina virtual vulnerable y exponerla a Internet, pude generar eventos de seguridad reales, como intentos fallidos de inicio de sesión, y analizarlos con herramientas como PowerShell y Log Analytics.
+     Integrar la API de IPGeolocation para obtener datos geográficos me permitió visualizar los ataques en un mapa, lo que mostró cómo un SIEM puede correlacionar y analizar datos en tiempo real. Esto me dió una comprensión práctica de cómo configurar, gestionar y responder a amenazas de seguridad, lo cual es fundamental para proteger cualquier entorno digital.<b/>
 <br />
 
 
