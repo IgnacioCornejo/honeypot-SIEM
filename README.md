@@ -289,9 +289,10 @@
  un tiempo. Pueden ir probando el siguiente query para ver si ya esta sincronizado: FAILED_RDP_WITH_GEO.</b><br/>
 </p>
 
-![image](https://github.com/user-attachments/assets/bbe71a18-4310-4a58-b896-7d587be78987)
-![image](https://github.com/user-attachments/assets/4c594994-292f-4b0e-b873-79a1e9308c96)
-![image](https://github.com/user-attachments/assets/269c98f8-2c12-42c2-9e69-e010b24f847a)
+![image](https://github.com/user-attachments/assets/dd7327be-0515-4b9a-b124-a5804f1af7a8)
+![image](https://github.com/user-attachments/assets/b20acccc-c09e-4cf5-b1f8-14724f3fcb55)
+![image](https://github.com/user-attachments/assets/80112ca5-6b4d-47d1-a8cb-714d1eb8b0df)
+
 
 
 
@@ -302,12 +303,13 @@
 <b>Lo último que queda por hacer es la creación del mapa, para esto necesito crear un nuevo Workbook en Microsoft Sentinel. Al crear uno ya nos muestra widgets y gráficos que estan predeterminados, los eliminamos para poder empezar a configurar nuestro query que lo que va a hacer es consultar la data y los campos del Log Analytics, basicamente le estamos mostrando a Microsoft Sentinel el conjunto de data que tiene que usar.El query está subido en el github como Workbook Query.</b><br/>
 </p>
 
-![image](https://github.com/user-attachments/assets/f3898907-ecc4-4728-a278-6dc244689f3f)
-![image](https://github.com/user-attachments/assets/56dd7c21-69c2-42a4-ac9f-eae9b504be40)
-![image](https://github.com/user-attachments/assets/70e116ba-9945-4513-ac66-959fb35dda41)
-![image](https://github.com/user-attachments/assets/c8ce8c79-b727-4062-bd5c-5093bbaa5b01)
-![image](https://github.com/user-attachments/assets/340f1666-cbf5-47e7-afe6-4497f8134e47)
-![image](https://github.com/user-attachments/assets/ee45c2cf-eee2-47c6-a3aa-9599b9b3d226)
+![image](https://github.com/user-attachments/assets/236257f4-7f68-46a2-8a1d-f0c44ae86585)
+![image](https://github.com/user-attachments/assets/44b2724d-6617-463c-966b-19819ef8a0bd)
+![image](https://github.com/user-attachments/assets/875ea74b-12e3-412e-9390-ac6a7a2b94ea)
+![image](https://github.com/user-attachments/assets/44bcc053-cba0-4b9a-81af-d02598b1b8da)
+![image](https://github.com/user-attachments/assets/c98a028e-7c8c-45be-9d0b-4294a25dc024)
+![image](https://github.com/user-attachments/assets/4d22f2ad-b1ff-40f1-b93f-b5fd3d3a9251)
+
 
 
 
