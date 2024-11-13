@@ -1,6 +1,7 @@
 <h1>Microsoft Sentinel Mapa de Ataque Home Lab</h1>
 
 <h2>Descripción</h2>
+
 <b>En este lab muestro un paso a paso de como usar una cuenta de microsoft azure, para crear una máquina virtual vulnerable con Windows 10 que va a servir como objetivo fácil para atacantes. La idea es exponer esta máquina virtual al internet y luego usar el Log Analytics Workspace, Microsoft Defender for Cloud, y Azure Sentinel para recolectar y agregar la data del ataque y mostrarla desplegada en un mapa de Microsoft Sentinel. En este proyecto voy a demostrar el uso de diferentes recursos y herramientas. Voy a estar usando Powershell para escanear el visor de eventos de Windows en la máquina expuesta, más especificamente el EventID 4625 que es intento de inicio de sesión fallido, y enviar esa data a un logfile. El script de Powershell tambien envía la dirección IP de cualquier inicio de sesión fallido a IPgeolocation.io por medio de una API, para así luego esa información pueda ser usada por Microsoft Sentinel para mapear de donde se originaron esos intentos. Este proyecto fue realizado con la idea de ganar experiencia práctica con SIEMs, conceptos de la nube y recursos, APIs, y Microsoft Azure en general. Aprendí como configurar y manejar recursos en la nube, como leer SIEM logs y poder extraer data de ellos.<b/>
 <br />
 
@@ -328,11 +329,12 @@
 <b>Luego de creación del query solo queda elegir como quiero que se visualicen estos datos, en este caso vamos a elegir mapa y lo configuramos de la siguiente manera:.</b>  <br/>
 </p>
 
-![image](https://github.com/user-attachments/assets/67d6abac-77d1-4fc2-8dd8-cdcdc6c8d392)
-![image](https://github.com/user-attachments/assets/2986d47c-be7c-4185-ac91-381c2494795d)
-![image](https://github.com/user-attachments/assets/d5db7e7e-62b0-4568-b8df-993d50d9ecfa)
-![image](https://github.com/user-attachments/assets/54a57d85-6bb8-4256-b873-e62c10da5bf3)
-![image](https://github.com/user-attachments/assets/69db7d0a-cc78-4a23-ae98-3ce074b2f1be)
+![image](https://github.com/user-attachments/assets/858f8a81-b70a-4955-bec8-961a7f03065e)
+![image](https://github.com/user-attachments/assets/877e713f-2c78-47b9-8cce-8a1b64204c67)
+![image](https://github.com/user-attachments/assets/82d7a5f6-3d2e-4a6f-a933-b8fa52c22570)
+![image](https://github.com/user-attachments/assets/d71f6380-a8a8-44d3-9791-73387c3995ca)
+![image](https://github.com/user-attachments/assets/ec90826d-ebf2-4029-89ea-b9f19b547a50)
+
 
 
 
@@ -342,8 +344,12 @@
 <b>En esta ultima imágen muestro el resultado final de este proyecto, en el transcurso de pocos dias recibí mas de 3000 ataques de diferentes partes del mundo, como se puede apreciar en el mapa. El lugar principal donde mas recibí estos intentos de login fallidos es Brasil con mas  2000 de intentos y Rusia con casi 1000 intentos, pero se pueden ver ataques en todas partes del mundo,como Estados Unidos desde diferentes estados, o China, Holando e India. </b>  <br/>
 </p>
 
-![image](https://github.com/user-attachments/assets/c5bb9e0e-8196-45ce-acf8-06b771f4bd93)
+![image](https://github.com/user-attachments/assets/4199f4f2-4183-4c51-8552-58e73e7a25d5)
 
+<h2>Conclusiones</h2>
+
+<b>Esta es solo una de las muchas cosas<b/>
+<br />
 
 
 
