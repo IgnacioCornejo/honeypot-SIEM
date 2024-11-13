@@ -1,7 +1,7 @@
 <h1>Microsoft Sentinel Mapa de Ataque Home Lab</h1>
 
 <h2>Descripción</h2>
-<b>En este lab muestro un paso a paso de como usar una cuenta de microsoft azure, para crear una maquina virtual vulnerable con windows 10 que va a servir como objetivo facil para atacantes. La idea es exponer esta maquina virtual al internet y luego usar el Log Analytics Workspace, Microsoft Defender for Cloud, y Azure Sentinel para recolectar y agregar la data del ataque y mostrarla desplegada en un mapa de Microsoft Sentinel. En este proyecto voy a demostrar el uso de diferentes recursos y herramientas. Voy a estar usando Powershell para escanear el visor de eventos de windows en la maquina expuesta, mas especificamente el EventID 4625 que es intento de inicio de sesion fallido, y enviar esa data a un logfile.El script de Powershell tambien envia la direccion IP de cualquier inicio de sesion fallido a IPgeolocation.io por medio de una API, para asi luego esa informacion pueda ser usada por Microsoft Sentinel para mapear de donde se originaron esos intentos. Este proyecto fue realizado con la idea de ganar experiencia practica con SIEMs, conceptos de la nube y recursos, APIs, y Microsoft Azure en general. Aprendí como configurar y manejar recursos en la nube, como leer SIEM logs y poder extraer data de ellos.<b/>
+<b>En este lab muestro un paso a paso de como usar una cuenta de microsoft azure, para crear una máquina virtual vulnerable con Windows 10 que va a servir como objetivo fácil para atacantes. La idea es exponer esta máquina virtual al internet y luego usar el Log Analytics Workspace, Microsoft Defender for Cloud, y Azure Sentinel para recolectar y agregar la data del ataque y mostrarla desplegada en un mapa de Microsoft Sentinel. En este proyecto voy a demostrar el uso de diferentes recursos y herramientas. Voy a estar usando Powershell para escanear el visor de eventos de Windows en la máquina expuesta, más especificamente el EventID 4625 que es intento de inicio de sesión fallido, y enviar esa data a un logfile. El script de Powershell tambien envía la dirección IP de cualquier inicio de sesión fallido a IPgeolocation.io por medio de una API, para así luego esa información pueda ser usada por Microsoft Sentinel para mapear de donde se originaron esos intentos. Este proyecto fue realizado con la idea de ganar experiencia práctica con SIEMs, conceptos de la nube y recursos, APIs, y Microsoft Azure en general. Aprendí como configurar y manejar recursos en la nube, como leer SIEM logs y poder extraer data de ellos.<b/>
 <br />
 
 <h2>Herramientas Usadas</h2>
@@ -26,10 +26,10 @@
 - <b>Microsoft Azure Free Trial:</b> https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account/
 - <b>IPGeolocation:</b> https://ipgeolocation.io/
 
-<h2 align="center">Paso a paso del Proyecto</h2>
+<h2 align="center">Páso a páso del Proyecto</h2>
 
 <p align="center">
-<b>Lo primero que hay que hacer una vez ya creada la cuenta de Azure, es crear un grupo de recursos, dentro de este va a estar montado el laboratorio, esto facilita la eliminación posteriormente del mismo (ya que nos seguiria consumiendo los creditos gratuitos de la prueba)  debido a que de otra manera tendriamos que eliminar cada maquina,vnet, servidor o lo que se este usando, uno por uno, de esta manera ahorramos tiempo y tambien es mas facil de manejar cada recurso. Para encontrar el grupo de recursos podemos buscarlo en la barra superior. Al momento de elegir la zona, la predeterminada siempre es US East, pero aca debemos elegir la que es mas cercana a donde estemos. </b> <br/>
+<b>Lo primero que hay que hacer una vez ya creada la cuenta de Azure, es crear un grupo de recursos, dentro de este va a estar montado el laboratorio, esto facilita la eliminación posterior del mismo (ya que nos seguiria consumiendo los créditos gratuitos de la prueba)  debido a que de otra manera tendriamos que eliminar cada maquina,vnet, servidor o lo que se este usando, uno por uno, de esta manera ahorramos tiempo y tambien es más fácil manejar cada recurso. Para encontrar el grupo de recursos podemos buscarlo en la barra superior. Al momento de elegir la zona, la predeterminada siempre es US East, pero acá debemos elegir la que es mças cercana a donde estemos. </b> <br/>
 </p>
 
 
@@ -58,24 +58,28 @@
 
 
 
-
+<br />
+<br />
 <p align="center"> Recomiendo elegir 2 vcpu, que es lo suficiente que la maquina necesita para no crashear.</p>
 
 ![image](https://github.com/user-attachments/assets/2572e905-e834-487e-9a3e-bbd9572d387e)
 
-
- <p align="center">Cuando vayan a crear el usario y contraseña de la maquina virtual no lo olviden porque con esta informacion vamos a entrar de manera remota a la maquina posteriormente.</p>
+<br />
+<br />
+ <p align="center">Cuando vayan a crear el usuario y contraseña de la máquina virtual no lo olviden, porque con esta información vamos a entrar de manera remota a la máquina posteriormente.</p>
 
 ![image](https://github.com/user-attachments/assets/81aa8bb1-9ab9-4c78-9a0e-ca4c8a1ee1f3)
 
-
-<p align="center"> En esta seccion seleccionen proximo hasta llegar al apartado de networking.</p>
+<br />
+<br />
+<p align="center"> En esta sección seleccionen próximo hasta llegar al apartado de networking.</p>
 
 ![image](https://github.com/user-attachments/assets/e3f0293a-678c-4eda-bc46-9b1878f4b389)
 
 
-
- <p align="center">El proximo paso es crear y configurar un nuevo Network Security Group (NSG) que vendria a actuar como nuestro firewall. En este caso no queremos ninguna regla que limite y bloquee tráfico ya que queremos permitir que cualquiera se pueda comunicar con nuestra máquina, La configuracion de la nueva regla que creamos es para que permita cualquier puerto (*)</b> <br/>
+<br />
+<br />
+ <p align="center">El proximo paso es crear y configurar un nuevo Network Security Group (NSG) que vendría a actuar como nuestro Firewall. En este caso no queremos ninguna regla que limite y bloqueé tráfico ya que queremos permitir que cualquiera se pueda comunicar con nuestra máquina, La configuración de la nueva regla que creamos es para que permita cualquier puerto (*).</b> <br/>
 </p>
 
 ![image](https://github.com/user-attachments/assets/0d32a693-6d88-4912-b616-f2f2b6247873)
@@ -92,7 +96,7 @@
 <br />
 
 <p align="center">
-<b>Mientras se crea la máquina virtual,podemos empezar creando nuestro Log Analytics Workspace. Recuerden elegir siempre el grupo de recursos creado para este lab  .</b> <br/>
+<b>Mientras se crea la máquina virtual,podemos empezar creando nuestro Log Analytics Workspace. Recuerden elegir siempre el grupo de recursos creado para este lab.</b> <br/>
 </p>
 
 ![image](https://github.com/user-attachments/assets/70067681-d938-4d77-a2e5-f7c98231c18c)
@@ -129,8 +133,9 @@
 
 
 <br />
+<br />
 <p align="center">
-<b>Una vez ya creada la maquina virtual, podemos ir al Log Analytics Workspaces y conectar nuestra VM al servicio  .</b> <br/>
+<b>Una vez ya creada la máquina virtual, podemos ir al Log Analytics Workspaces y conectar nuestra VM al servicio.</b> <br/>
 </p>
 
 ![image](https://github.com/user-attachments/assets/ad68244d-f4b9-4c07-99f3-d9024f7742b6)
@@ -144,7 +149,7 @@
 <br />
 <br />
 <p align="center">
-<b>Ahora debemos crear una instancia de Microsoft Sentinel y conectarla a nuestra VM. En mi caso la VM no aparece porque ya la conecte previamente, pero a ustedes les va a salir para seleccionar y luego la agregan </b> <br/>
+<b>Ahora debemos crear una instancia de Microsoft Sentinel y conectarla a nuestra VM. En mi caso la VM no aparece porque ya la conecte previamente, pero a ustedes les va a aparecer para seleccionar y la agregan. </b> <br/>
 </p>
 
 ![image](https://github.com/user-attachments/assets/e3a52d5f-6913-43c4-ba6b-61cc4f256505)
@@ -153,7 +158,7 @@
 <br />
 <br />
 <p align="center">
-<b>Ahora que ya esta todo configurado en el dashboard de Azure, podemos entrar a la vm y configurarla, para eso necesitamos obtener la direccion IP para entrar via Escritorio Remoto.</b> <br/>
+<b>Ahora que ya esta todo configurado en el dashboard de Azure, podemos entrar a la vm y configurarla, para eso necesitamos obtener la dirección IP para entrar via Escritorio Remoto.</b> <br/>
 </p>
 
 ![image](https://github.com/user-attachments/assets/0a8dee6a-3fa8-4125-902b-1a9754784c79)
@@ -163,7 +168,7 @@
 <br />
 <br />
 <p align="center">
-<b>Abrimos el escritorio remoto e ingresamos las credenciales que creamos cuando hicimos la VM .</b> <br/>
+<b>Abrimos el escritorio remoto e ingresamos las credenciales que creamos cuando hicimos la VM.</b> <br/>
 </p>
 
 ![image](https://github.com/user-attachments/assets/a7d0a434-9a71-4f04-9676-6a4cb62bd491)
@@ -172,7 +177,7 @@
 <br />
 <br />
 <p align="center">
-<b>Una vez ya logueado en la VM, nos dirigmos al visor de eventos de windows (Event Viewer), que es donde se registra todo lo que sucede en un sistema Windows.Le asigna a cada acción un EventID para que pueda ser facilmente navegado mediante el EventID, para este proyecto nos interesa principalmente el EventID 4625 que es el de Intentos de Logon Fallidos(Failed Logon Attemps).Estos logs los podemos encontrar en la pestaña de seguridadn, en mi caso tengo varios de estos intentos fallidos porque estoy mostrando la maquina ya atacada, pero si ustedes quieren ver este log pueden hacer un intento fallido de inicio de sesion para que este aparezca.</b> <br/>
+<b>Una vez ya logueado en la VM, nos dirigimos al visor de eventos de Windows (Event Viewer), que es donde se registra todo lo que sucede en un sistema Windows.Le asigna a cada acción un EventID para que pueda ser facilmente navegado mediante el EventID, para este proyecto nos interesa principalmente el EventID 4625 que es el de Intentos de Logon Fallidos(Failed Logon Attemps).Estos logs los podemos encontrar en la pestaña de seguridad, en mi caso tengo varios de estos intentos fallidos porque estoy mostrando la máquina ya atacada, pero si ustedes quieren ver este log pueden hacer un intento fallido de inicio de sesion para que este aparezca.</b> <br/>
 </p>
 
 ![image](https://github.com/user-attachments/assets/4584e0f0-383a-4e34-af15-2254d328db09)
@@ -201,7 +206,7 @@
 <br />
 <br />
 <p align="center">
-<b>Ahora que nuestra VM esta expuesta al internet podemos empezar configurando el script de Powershell, este script va a parsear Event Viewer especificamente buscando por el EventID 4625. Luego va a enviar la direccion IP desde los Failed Logon Attemps hacia la pagina de IPgeolocation a traves de una API. El script va a recibir toda la data geográfica y la va a guardar como una cadena de texto (string) en un archivo de log llamado failed_rdp.log, a futuro vamos a usar este archivo para mapear los ataques en Microsoft Sentinel</b> <br/>
+<b>Ahora que nuestra VM esta expuesta al internet podemos empezar configurando el script de Powershell, este script va a parsear Event Viewer especificamente buscando por el EventID 4625. Luego va a enviar la dirección IP desde los Failed Logon Attemps hacia la página de IPgeolocation a través de una API. El script va a recibir toda la data geográfica y la va a guardar como una cadena de texto (string) en un archivo de log llamado failed_rdp.log, a futuro vamos a usar este archivo para mapear los ataques en Microsoft Sentinel.</b> <br/>
 </p>
 
 ![image](https://github.com/user-attachments/assets/776225ba-59ab-40d7-a30a-df495b415e73)
@@ -211,7 +216,7 @@
 <br />
 <br />
 <p align="center">
-<b>Una vez abierto el Powershell pegamos el script que lo pueden encontar subido en el github como Powershell Script, luego guardamos en script en el escritorio como Log_Exporter. Llegado a este punto ya deberian crearse una cuenta en IPgeolocation para que les otorgue la API key que vamos a estar usando en el script.</b> <br/>
+<b>Una vez abierto el Powershell pegamos el script que lo pueden encontar subido en el github como Powershell Script, luego guardamos el script en el escritorio como Log_Exporter. Llegado a este punto ya deberian crearse una cuenta en IPgeolocation para que les otorgue la API key que vamos a estar usando en el script.</b> <br/>
 </p>
 
 ![image](https://github.com/user-attachments/assets/b812dd89-3f99-4991-9234-53b7b9033306)
@@ -225,7 +230,7 @@
 <br />
 <br />
 <p align="center">
-<b>Ejecutamos el script con la tecla  F5, habiendo ya ingresado nuestra API key donde se encuentran las comillas vacias($API_KEY      = "").La salida que ven del script es como se ve cuando alguien falló un intento de inicio de sesion.A partir de ahora deben esperar a que la maquina sea atacada para que se empiecen a generar los logs</b> <br/>
+<b>Ejecutamos el script con la tecla F5, habiendo ya ingresado nuestra API key donde se encuentran las comillas vacías ($API_KEY      = "").La salida que ven del script es como se ve cuando alguien falló un intento de inicio de sesión.A partir de ahora deben esperar a que la maquina sea atacada para que se empiecen a generar los logs.</b> <br/>
 </p>
 
 ![image](https://github.com/user-attachments/assets/b37c0e44-0ddb-4df6-97a9-b05f2a0ae3a0)
@@ -233,7 +238,7 @@
 <br />
 <br />
 <p align="center">
-<b</b>Las siguientes imagenes muestran como la data es guardada en el archivo de log failed_rdp en formato de cadena de texto (string).   <br/>
+<b</b>Las siguientes imágenes muestran como la data es guardada en el archivo de log failed_rdp en formato de cadena de texto (string).   <br/>
 </p>
 
 ![image](https://github.com/user-attachments/assets/89c8da17-eb52-4171-bbe3-23fac6be4a9b)
@@ -248,7 +253,7 @@
 <br />
 <br />
 <p align="center">
-<b>Una vez corroborado que el script funciona correctamente, podemos dirigirnos al Log Analytics Workbooks para crear un log personalizado para traer los failed_rdp logs dentro del Log Analytics de Azure.Lo que tenemos que hacer ahora es copiar el contenido de nuestro archivo failed_rdp que está en nuestra vm,  luego crear el mismo archivo en nuestra maquina Host, y pegar el contenido  para poder seleccionarlo como sample log.</b> <br/>
+<b>Una vez corroborado que el script funciona correctamente, podemos dirigirnos al Log Analytics Workbooks para crear un log personalizado para traer los failed_rdp logs dentro del Log Analytics de Azure.Lo que tenemos que hacer ahora es copiar el contenido de nuestro archivo failed_rdp que está en nuestra vm,  luego crear el mismo archivo en nuestra máquina Host, y pegar el contenido para poder seleccionarlo como sample log.</b> <br/>
 </p>
 
 ![image](https://github.com/user-attachments/assets/6f9fc0b2-5f2c-4780-b75f-2f7c8e8abfe7)
@@ -263,7 +268,7 @@
 <br />
 <br />
 <p align="center">
-<b>En esta sección pregunta por la ruta de recopilación que es donde los logs se encuentran en nuestra VM, la ruta es C:\ProgramData\failed_rdp.log. Luego tenemos que nombrar nuestra log personalizado , pueden nombrarlo como quieran, en este caso usé FAILED_RDP_WITH_GEO y por ultimo lo creamos. </b> <br/>
+<b>En esta sección pregunta por la ruta de recopilación que es donde los logs se encuentran en nuestra VM, la ruta es C:\ProgramData\failed_rdp.log . Luego tenemos que nombrar nuestro log personalizado , pueden nombrarlo como quieran, en este caso usé FAILED_RDP_WITH_GEO y por último lo creamos. </b> <br/>
 </p>
 
 ![image](https://github.com/user-attachments/assets/c360bbdc-970e-48c8-9a6b-5bb949d38cad)
@@ -280,7 +285,7 @@
 <br />
 <br />
 <p align="center">
-<b>La creacion del log personalizado va a ser instantanea, pero la sincronización de la data de la VM hacia el Log Analytics va a tardar 
+<b>La creación del log personalizado va a ser instantanea, pero la sincronización de la data de la VM hacia el Log Analytics va a tardar 
  un tiempo. Pueden ir probando el siguiente query para ver si ya esta sincronizado: FAILED_RDP_WITH_GEO.</b><br/>
 </p>
 
@@ -294,7 +299,7 @@
 <br />
 <br />
 <p align="center">
-<b>Lo último que queda por hacer es la creación del mapa, para esto necesito crear un nuevo Workbook en Microsoft Sentinel. Al crear uno ya nos muestra widgets y gráficos que estan predeterminados, los eliminamos para poder empezar a configurar nuestro query que lo que va a hacer es consultar la data y los campos del Log Analytics, basicamente le estamos mostrando a Microsoft Sentinel el conjunto de data que tiene que usar.El query está subido en el github como Workbook Query</b><br/>
+<b>Lo último que queda por hacer es la creación del mapa, para esto necesito crear un nuevo Workbook en Microsoft Sentinel. Al crear uno ya nos muestra widgets y gráficos que estan predeterminados, los eliminamos para poder empezar a configurar nuestro query que lo que va a hacer es consultar la data y los campos del Log Analytics, basicamente le estamos mostrando a Microsoft Sentinel el conjunto de data que tiene que usar.El query está subido en el github como Workbook Query.</b><br/>
 </p>
 
 ![image](https://github.com/user-attachments/assets/f3898907-ecc4-4728-a278-6dc244689f3f)
@@ -332,7 +337,7 @@
 <br />
 <br />
 <p align="center">
-<b>En esta ultima imagen muestro el resultado final de este proyecto, en el transcurso de pocos dias recibí mas de 3000 ataques de diferentes partes del mundo, como se puede apreciar en el mapa. El lugar principal donde mas recibí estos intentos de login fallidos es Brasil con mas  2000 de intentos y Rusia con casi 1000 intentos, pero se pueden ver ataques en todas partes del mundo,como Estados Unidos desde diferentes estados, o China, Holando e India. </b>  <br/>
+<b>En esta ultima imágen muestro el resultado final de este proyecto, en el transcurso de pocos dias recibí mas de 3000 ataques de diferentes partes del mundo, como se puede apreciar en el mapa. El lugar principal donde mas recibí estos intentos de login fallidos es Brasil con mas  2000 de intentos y Rusia con casi 1000 intentos, pero se pueden ver ataques en todas partes del mundo,como Estados Unidos desde diferentes estados, o China, Holando e India. </b>  <br/>
 </p>
 
 ![image](https://github.com/user-attachments/assets/c5bb9e0e-8196-45ce-acf8-06b771f4bd93)
