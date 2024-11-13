@@ -33,10 +33,11 @@
 </p>
 
 
-![image](https://github.com/user-attachments/assets/dddc445a-a85f-4660-a064-df218a9d2e24)
-![image](https://github.com/user-attachments/assets/37742e4c-4950-4430-9e6a-66908b400869)
-![image](https://github.com/user-attachments/assets/fb6aaa05-3aa7-4ea1-8504-749f517ef3be)
-![image](https://github.com/user-attachments/assets/d801a100-4b5a-4a57-9e66-96932272063d)
+![image](https://github.com/user-attachments/assets/8aca1c73-ad54-4788-aa44-65be8d5020ab)
+![image](https://github.com/user-attachments/assets/bf69d529-56d9-4816-bf08-42088463fa14)
+![image](https://github.com/user-attachments/assets/548f9ca2-ffe3-47b4-b964-c779844c47f8)
+![image](https://github.com/user-attachments/assets/624fd2bd-abb0-4b75-896a-1018cfbf4803)
+
 
 
 
@@ -50,9 +51,9 @@
 <p align="center">
 <b>Lo siguiente que voy a hacer es  crear la máquina virtual que va a actuar de honeypot. A la hora de elegir el grupo de recurso, seleccionen el que crearon recientemente.</p>
 
-![image](https://github.com/user-attachments/assets/da77ff8a-0222-4545-857d-eaea63d7d46a)
-![image](https://github.com/user-attachments/assets/02ac0815-8e6d-4c48-a3e5-6367c311d499)
-![image](https://github.com/user-attachments/assets/bc9c9f6a-b08c-49ce-916b-1a81ed7dcd8a)
+![image](https://github.com/user-attachments/assets/47c75c95-24c1-4bbd-8b6d-42d006901019)
+![image](https://github.com/user-attachments/assets/7eb8ef84-2606-4cf0-93d3-a4e7a642c189)
+![image](https://github.com/user-attachments/assets/75099603-f2ef-472f-a8c4-dc3f88273385)
 
 
 
@@ -60,48 +61,29 @@
 
 <p align="center"> Recomiendo elegir 2 vcpu, que es lo suficiente que la maquina necesita para no crashear.</p>
 
-![image](https://github.com/user-attachments/assets/8ebd2c1a-1671-427b-b06f-b0360870243f)
+![image](https://github.com/user-attachments/assets/2572e905-e834-487e-9a3e-bbd9572d387e)
+
 
  <p align="center">Cuando vayan a crear el usario y contraseña de la maquina virtual no lo olviden porque con esta informacion vamos a entrar de manera remota a la maquina posteriormente.</p>
 
-![image](https://github.com/user-attachments/assets/33e555a7-a0c0-4678-9dfa-f880e49f69c1)
+![image](https://github.com/user-attachments/assets/81aa8bb1-9ab9-4c78-9a0e-ca4c8a1ee1f3)
+
 
 <p align="center"> En esta seccion seleccionen proximo hasta llegar al apartado de networking.</p>
 
-![image](https://github.com/user-attachments/assets/3f4c9589-0db3-420a-8457-2461b33fae92)
+![image](https://github.com/user-attachments/assets/e3f0293a-678c-4eda-bc46-9b1878f4b389)
+
 
 
  <p align="center">El proximo paso es crear y configurar un nuevo Network Security Group (NSG) que vendria a actuar como nuestro firewall. En este caso no queremos ninguna regla que limite y bloquee tráfico ya que queremos permitir que cualquiera se pueda comunicar con nuestra máquina, La configuracion de la nueva regla que creamos es para que permita cualquier puerto (*)</b> <br/>
 </p>
 
-![image](https://github.com/user-attachments/assets/6394b8a0-db20-4eab-9305-fef735ce99fd)
-![image](https://github.com/user-attachments/assets/72f33793-e8fe-4835-b49d-5900f0d94bb8)
-![image](https://github.com/user-attachments/assets/79f4727e-ce7d-4e6c-8f87-d0db33818a49)
-![image](https://github.com/user-attachments/assets/6d8d46c0-20ca-4ece-af44-317d14a2f57a)
-![image](https://github.com/user-attachments/assets/f111f593-7ca5-4396-b4f9-8a4e74c004bd)
-![image](https://github.com/user-attachments/assets/c2172f70-55ff-4925-a404-231896192c1f)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![image](https://github.com/user-attachments/assets/0d32a693-6d88-4912-b616-f2f2b6247873)
+![image](https://github.com/user-attachments/assets/2cb9f342-77f5-437a-b8ab-7a85f0e0beb3)
+![image](https://github.com/user-attachments/assets/ec8c5b4f-d33f-4f9f-87c6-42e8dc7f2087)
+![image](https://github.com/user-attachments/assets/54dc3215-909d-4830-9136-2ee8b2778a6a)
+![image](https://github.com/user-attachments/assets/4e6b8c1b-89dd-41bf-b733-1abf12451ddb)
+![image](https://github.com/user-attachments/assets/a002f906-ae5c-49f1-bfe7-2bf5ecb8e481)
 
 
 
@@ -113,10 +95,10 @@
 <b>Mientras se crea la máquina virtual,podemos empezar creando nuestro Log Analytics Workspace. Recuerden elegir siempre el grupo de recursos creado para este lab  .</b> <br/>
 </p>
 
-![image](https://github.com/user-attachments/assets/84529b87-e698-4328-b032-04c547ab3b05)
-![image](https://github.com/user-attachments/assets/d83ba323-affc-492a-b9df-9c8bddd9b7c4)
-![image](https://github.com/user-attachments/assets/db0d9768-212f-4731-a79b-6ac1a62f8819)
-![image](https://github.com/user-attachments/assets/ef5f6ac7-5723-4131-a646-479a51668c62)
+![image](https://github.com/user-attachments/assets/70067681-d938-4d77-a2e5-f7c98231c18c)
+![image](https://github.com/user-attachments/assets/3413fd23-551d-43bd-80d4-fb1a42ea1a88)
+![image](https://github.com/user-attachments/assets/66f003bf-0d43-421b-acb2-4af4e975ccdb)
+![image](https://github.com/user-attachments/assets/374b6720-e6fa-4028-8806-91c88a6b4a14)
 
 
 
@@ -129,10 +111,11 @@
 </b> <br/>
 </p>
 
-![image](https://github.com/user-attachments/assets/38aff52f-f412-4069-9e1e-952e7c61fbe3)
-![image](https://github.com/user-attachments/assets/7885fd07-f0fd-4f2d-a9e0-e0d8e734b591)
-![image](https://github.com/user-attachments/assets/d1aa3714-c391-428b-99a7-dcdce57813b8)
-![image](https://github.com/user-attachments/assets/fa2ad8cc-c88c-40ef-9882-7b39454ecfa5)
+![image](https://github.com/user-attachments/assets/31cf453c-4702-4a51-af5d-9c0f06fb1489)
+![image](https://github.com/user-attachments/assets/dc5bf363-ad80-4a8d-945a-cdc808b0c8ad)
+![image](https://github.com/user-attachments/assets/48b80efd-f45a-41e2-9280-3813daa2b398)
+![image](https://github.com/user-attachments/assets/68528d9b-4c24-44a6-82f7-4f0502ccde09)
+
 
 
 
@@ -150,9 +133,10 @@
 <b>Una vez ya creada la maquina virtual, podemos ir al Log Analytics Workspaces y conectar nuestra VM al servicio  .</b> <br/>
 </p>
 
-![image](https://github.com/user-attachments/assets/bf7784b7-3001-4fbb-a913-bbfdbe08b0e3)
-![image](https://github.com/user-attachments/assets/0139f03a-ab84-4d39-87e3-e790b9434944)
-![image](https://github.com/user-attachments/assets/4ce549a1-145e-49be-ac6c-2ef093bb99df)
+![image](https://github.com/user-attachments/assets/ad68244d-f4b9-4c07-99f3-d9024f7742b6)
+![image](https://github.com/user-attachments/assets/cdea5f61-dc98-4442-b56e-751427dea07f)
+![image](https://github.com/user-attachments/assets/269b661c-3b74-4a44-892b-533d64d9e752)
+
 
 
 
@@ -163,7 +147,7 @@
 <b>Ahora debemos crear una instancia de Microsoft Sentinel y conectarla a nuestra VM. En mi caso la VM no aparece porque ya la conecte previamente, pero a ustedes les va a salir para seleccionar y luego la agregan </b> <br/>
 </p>
 
-![image](https://github.com/user-attachments/assets/e32f9b73-00c9-47e1-be01-812d1b734d0a)
+![image](https://github.com/user-attachments/assets/e3a52d5f-6913-43c4-ba6b-61cc4f256505)
 
 
 <br />
@@ -172,7 +156,8 @@
 <b>Ahora que ya esta todo configurado en el dashboard de Azure, podemos entrar a la vm y configurarla, para eso necesitamos obtener la direccion IP para entrar via Escritorio Remoto.</b> <br/>
 </p>
 
-![image](https://github.com/user-attachments/assets/56e07206-3a8b-46dd-88d0-6a3978d3af18)
+![image](https://github.com/user-attachments/assets/0a8dee6a-3fa8-4125-902b-1a9754784c79)
+
 
 
 <br />
@@ -181,7 +166,7 @@
 <b>Abrimos el escritorio remoto e ingresamos las credenciales que creamos cuando hicimos la VM .</b> <br/>
 </p>
 
-![image](https://github.com/user-attachments/assets/7c018091-84da-427e-8294-8447f3bf9521)
+![image](https://github.com/user-attachments/assets/a7d0a434-9a71-4f04-9676-6a4cb62bd491)
 
 
 <br />
@@ -206,7 +191,7 @@
 <br />
 <br />
 <p align="center">
-<b>Para asegurarnos de que cualquiera en internet pueda descubrir nuestra VM facilmente, necesitamos desactivar el Firewall de WindowsTo make sure that everyone on the internet can discover my VM I need to disable the windows firewall. </b> <br/>
+<b>Para asegurarnos de que cualquiera en internet pueda descubrir nuestra VM facilmente, necesitamos desactivar el Firewall de Windows. </b> <br/>
 </p>
 
 ![image](https://github.com/user-attachments/assets/1a662d87-7e05-4562-9356-73fb741708ca)
@@ -231,7 +216,8 @@
 
 ![image](https://github.com/user-attachments/assets/b812dd89-3f99-4991-9234-53b7b9033306)
 ![image](https://github.com/user-attachments/assets/8bf0a4c2-39a7-4981-b8d6-d355a714b71d)
-![image](https://github.com/user-attachments/assets/bfb2d5cb-2ec2-439f-a1a0-3773e0722338)
+![image](https://github.com/user-attachments/assets/d1e5899d-07d9-4bfe-afff-7d0b6653d688)
+
 
 
 
@@ -239,7 +225,7 @@
 <br />
 <br />
 <p align="center">
-<b>Ejecutamos el script con la tecla  F5, habiendo ya ingresado nuestra API key donde se encuentran las comillas vacias($API_KEY      = "").La salida que ven del script es como se ve cuando alguien falló un intento de inicio de sesion.A partir de ahora deben esperar a que la maquina sea tacada para que se empiecen a generar los logs</b> <br/>
+<b>Ejecutamos el script con la tecla  F5, habiendo ya ingresado nuestra API key donde se encuentran las comillas vacias($API_KEY      = "").La salida que ven del script es como se ve cuando alguien falló un intento de inicio de sesion.A partir de ahora deben esperar a que la maquina sea atacada para que se empiecen a generar los logs</b> <br/>
 </p>
 
 ![image](https://github.com/user-attachments/assets/b37c0e44-0ddb-4df6-97a9-b05f2a0ae3a0)
@@ -266,13 +252,13 @@
 </p>
 
 ![image](https://github.com/user-attachments/assets/6f9fc0b2-5f2c-4780-b75f-2f7c8e8abfe7)
-![image](https://github.com/user-attachments/assets/055d2059-5567-4232-b4e7-4bb0c5b9f6df)
-![image](https://github.com/user-attachments/assets/cfa35f9e-5b3d-45b2-8b43-473894985f12)
-![image](https://github.com/user-attachments/assets/3c15bdbd-b791-42ee-8728-2cb246afda46)
-![image](https://github.com/user-attachments/assets/f93e5d26-5d76-471f-9978-727dcf21ca92)
-![image](https://github.com/user-attachments/assets/49e7aa92-b3f8-4d37-8119-75e72ac5ccf5)
-![image](https://github.com/user-attachments/assets/c14d1f86-3908-4a7c-9ed3-4cd3d576be26)
-![image](https://github.com/user-attachments/assets/4151d54c-cce2-4519-89ae-c2439a674322)
+![image](https://github.com/user-attachments/assets/01465d01-be8e-4b22-8049-01c7d49a1a80)
+![image](https://github.com/user-attachments/assets/4f96d696-db21-4785-a8e7-21b52353b6dc)
+![image](https://github.com/user-attachments/assets/451394bd-71e0-439f-ac11-b6d0ea9701cc)
+![image](https://github.com/user-attachments/assets/b15d30be-8a53-4181-b786-6dae0d4d57aa)
+![image](https://github.com/user-attachments/assets/695b8042-02b9-4073-aa82-29c638a322cc)
+![image](https://github.com/user-attachments/assets/e569090d-fc3d-4aae-a2a1-9b914217a322)
+![image](https://github.com/user-attachments/assets/8759cc5a-5d1b-49b3-a4b4-375cf28dfe47)
 
 <br />
 <br />
@@ -280,8 +266,9 @@
 <b>En esta sección pregunta por la ruta de recopilación que es donde los logs se encuentran en nuestra VM, la ruta es C:\ProgramData\failed_rdp.log. Luego tenemos que nombrar nuestra log personalizado , pueden nombrarlo como quieran, en este caso usé FAILED_RDP_WITH_GEO y por ultimo lo creamos. </b> <br/>
 </p>
 
-![image](https://github.com/user-attachments/assets/e3b6ab66-99c0-4d2c-98a9-0b16596c3955)
-![image](https://github.com/user-attachments/assets/6fe8558f-c772-474c-ae60-69f0afc3ea82)
+![image](https://github.com/user-attachments/assets/c360bbdc-970e-48c8-9a6b-5bb949d38cad)
+![image](https://github.com/user-attachments/assets/48190161-124c-4753-8a24-a5557e7e4c67)
+
 
 
 
